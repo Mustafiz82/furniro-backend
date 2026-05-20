@@ -46,6 +46,7 @@ async function run() {
         const categoryCollection = DB.collection("category")
         const wishlistCollection = DB.collection("wishlist")
         const cartCollection = DB.collection("cart")
+        const orderCollection = DB.collection("order")
 
 
         app.post("/user", async (req, res) => {
@@ -287,6 +288,13 @@ async function run() {
             res.send(response)
         })
 
+
+
+        app.post("/order" , async(req , res) => {
+            const data = req.body
+            const response = await orderCollection.insertOne(data)
+            res.send(response)
+        })
 
 
 
